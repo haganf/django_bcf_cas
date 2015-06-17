@@ -7,9 +7,9 @@ from xml.dom import minidom
 
 from django.conf import settings
 from django.core.exceptions import ObjectDoesNotExist
-from cas.exceptions import CasTicketException
-from cas.models import User, Tgt, PgtIOU
-from cas.utils import cas_response_callbacks
+from bcf_cas.exceptions import CasTicketException
+from bcf_cas.models import User, Tgt, PgtIOU
+from bcf_cas.utils import cas_response_callbacks
 
 __all__ = ['CASBackend']
 
@@ -178,8 +178,10 @@ class CASBackend(object):
         if not username:
             return None
         try:
+            from django.contrib.auth import get_user_model
+            User = get_user_model()
             user = User.objects.get(username__iexact=username)
-        except User.DoesNotExist:
+        except ObjectDoesNotExist:
             return None  # don't create a user. the user will have to register through our UI.
         return user
 
@@ -187,6 +189,8 @@ class CASBackend(object):
         """Retrieve the user's entry in the User model if it exists"""
 
         try:
+            from django.contrib.auth import get_user_model
+            User = get_user_model()
             return User.objects.get(pk=user_id)
-        except User.DoesNotExist:
+        except ObjectDoesNotExist:
             return None
