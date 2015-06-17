@@ -9,10 +9,10 @@ os.chdir(os.path.normpath(os.path.join(os.path.abspath(__file__), os.pardir)))
 
 setup(
     name='django-bcf-cas',
-    version='0.1.1',
+    version='0.1.2',
     packages=['bcf_cas'],
     include_package_data=True,
-    license='BSD License',  # example license
+    license='GPL-3 License',
     description='A django app for enabling CAS auth.',
     long_description=README,
     url='https://github.com/nickeddy',
