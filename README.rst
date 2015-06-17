@@ -35,7 +35,7 @@ Quick start
 
     MIDDLEWARE_CLASSES = (
         ...
-        'cas.middleware.CASMiddleware',
+        'bcf_cas.middleware.CASMiddleware',
         ...
     )
 
