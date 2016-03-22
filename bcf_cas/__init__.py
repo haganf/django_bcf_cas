@@ -1,6 +1,11 @@
+# -*- coding: utf-8 -*-
+# bcf_cas/__init__.py
 """Django CAS 1.0/2.0 authentication backend"""
 
 from django.conf import settings
+
+default_app_config = 'bcf_cas.apps.BCFCASConfig'
+
 
 __all__ = []
 
